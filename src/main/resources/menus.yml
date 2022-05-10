@@ -1,0 +1,15 @@
+navigator:
+  title: "Navigator"
+  identifier: "navigator"
+  slots: 54
+  slot: 4
+  permission: slpnet.lobby.navigator
+  items:
+    tridentwar:
+      title: "TridentWar"
+      material: "TRIDENT"
+      description: "test\ntest"
+      slot: 18
+      action:
+        type: "connect"
+        argument: "tw1"

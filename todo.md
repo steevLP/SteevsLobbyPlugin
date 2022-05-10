@@ -1,0 +1,30 @@
+# first target
+- [X] Plugin Stabillity
+- [X] Debuggin: items properly handed on Join [In Progress]
+- [ ] command interpreter
+  - [ ] Player prefix
+  - [ ] Connection Prefix
+  - [ ] Teleportation Prefix
+  - [ ] Comamnd Execution Prefix
+  - [ ] open prefix
+    - Opens a specified new inventory and closes the old one
+  - [ ] prefix chainig (eg. execute prefix + player prefix)
+- [ ] Inventory Layering
+# secondary
+- [ ] Scoreboard Support
+- [ ] Motd Message Suport
+- [ ] Custom Bossbar support
+- [ ] Scheduled Message Support
+- [ ] Custom event based Title Support
+- [ ] Firework Support
+- [ ] Sound Support
+- [ ] Updatable Items in Inventory
+  - [ ] Items change on events (eg. settings toggle)
+- [ ] User Settings
+  - [ ] Players will be shown
+  - [ ] Toggle Referal Program
+  - [ ] Languages
+  - [ ] fly
+  - [ ] Doublejump
+- [ ] User Refereal Program
+- [ ] Documentation

@@ -1,0 +1,4 @@
+name: Lobby
+main: de.slpnetwork.lobby.Lobby
+version: 0.1
+api-version: 1.18

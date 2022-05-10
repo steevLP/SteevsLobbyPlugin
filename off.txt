@@ -1,0 +1,20 @@
+        Inventory inv = inventories.get(this.lobbyManager.getLobby().config.getString(key + ".title"));
+
+        // Nullpointer debugging
+        System.out.println(key + "0");
+        if(this.lobbyManager.getLobby().config.get("menu." + key + ".items") == null) System.out.println("Error: no items have been set, Menu will not be created"); // fixes nullpointer
+        if(this.lobbyManager.getLobby().config.get("menu." + key + ".items") == null) return; // fixes nullpointer
+
+        for(String keyItem : this.lobbyManager.getLobby().config.getConfigurationSection("menu." + key + ".items").getKeys(true)) {
+            if(this.lobbyManager.getLobby().config.get("menu." + key + ".items") == null) System.out.println("Error: no items have been set, Menu will not be created"); // fixes nullpointer
+            if(this.lobbyManager.getLobby().config.get("menu." + key + ".items") == null) return; // fixes nullpointer
+            // Error: material from config results null though it shouldn't
+            System.out.println(this.lobbyManager.getLobby().config.getString("menu."+key+".items."+keyItem+".material") + "1");
+            System.out.println(keyItem + "2");
+            inv.setItem(this.lobbyManager.getLobby().config.getInt("menu." + key + ".items." + keyItem + ".slot"),
+                    createGuiItem(Material.getMaterial(this.lobbyManager.getLobby().config.getString("menu." + key + ".items." + keyItem + ".material")),
+                            this.lobbyManager.getLobby().config.getString("menu." + key + ".items." + keyItem + ".title"),
+                            this.lobbyManager.getLobby().config.getString("menu." + key + ".items." + keyItem + ".description")
+                    )
+            );
+        }

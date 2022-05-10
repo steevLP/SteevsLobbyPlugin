@@ -1,0 +1,7 @@
+items:
+  COMPASS:
+    menu: "navigator"
+    display: "Navigator"
+    slot: 4
+    material: "COMPASS"
+    permission: "lobby.item.navigator"

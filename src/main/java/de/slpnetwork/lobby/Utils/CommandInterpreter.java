@@ -23,15 +23,16 @@ public class CommandInterpreter {
                 this.lobbyManager.getLobby().getServer().getLogger().warning("The Action: '" + action + "' is not defined");
                 break;
             case "menu":
-                // opens menu
                 this.lobbyManager.getInventoryManager().openInventory(executor, args);
                 break;
             case "teleport":
+                this.lobbyManager.getPlayerManager().teleportPlayer(executor, this.lobbyManager.getLobby().teleportDataConfig.getLocation("locations." + args));
                 break;
             case "connect":
                 this.lobbyManager.getPlayerManager().moveFromServer(args, Objects.requireNonNull(executor.getPlayer()));
                 break;
             case "execute":
+
                 break;
         }
     }

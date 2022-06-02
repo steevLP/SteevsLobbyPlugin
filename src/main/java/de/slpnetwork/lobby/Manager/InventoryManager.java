@@ -25,13 +25,11 @@ public class InventoryManager implements Listener {
         this.lobbyManager.setInventoryManager(this);
         this.inventories = new HashMap<String, Inventory>();
 
-        // TODO: replace default config with menudataconfig and iterate over its menu datapoint
-        for(String key: this.lobbyManager.getLobby().config.getConfigurationSection("menu").getKeys(false)) {
-            // TODO: replace current datapoints with new ones
+        for(String key: this.lobbyManager.getLobby().menuDataConfig.getConfigurationSection("menus").getKeys(false)) {
             this.inventories.put(
-                    this.lobbyManager.getLobby().config.getString("menu." + key + ".title"), Bukkit.createInventory(null,
-                            this.lobbyManager.getLobby().config.getInt("menu." + key + ".slots"),
-                            this.lobbyManager.getLobby().config.getString("menu." + key + ".title")
+                    this.lobbyManager.getLobby().menuDataConfig.getString("menus." + key + ".identifier"), Bukkit.createInventory(null,
+                            this.lobbyManager.getLobby().menuDataConfig.getInt("menus." + key + ".slots"),
+                            this.lobbyManager.getLobby().menuDataConfig.getString("menus." + key + ".title")
                     )
             );
             System.out.println(this.inventories.size() + " inventories stored"); // debugging inventories not beeing generated
@@ -40,21 +38,21 @@ public class InventoryManager implements Listener {
     }
 
     void initializeItems(String key){
-        Inventory inv = inventories.get(this.lobbyManager.getLobby().config.getString("menu." + key + ".title"));
+        Inventory inv = inventories.get(this.lobbyManager.getLobby().menuDataConfig.getString("menus." + key + ".identifier"));
 
         // Nullpointer debugging
         System.out.println(key + "0");
-        if(this.lobbyManager.getLobby().config.get("menu." + key) == null) System.out.println("Error: no items have been set, Menu will not be created"); // fixes nullpointer
-        if(this.lobbyManager.getLobby().config.get("menu." + key) == null) return; // fixes nullpointer
+        if(this.lobbyManager.getLobby().menuDataConfig.get("menus." + key) == null) System.out.println("Error: no items have been set, Menu will not be created"); // fixes nullpointer
+        if(this.lobbyManager.getLobby().menuDataConfig.get("menus." + key) == null) return; // fixes nullpointer
 
-        for(String keyItem : this.lobbyManager.getLobby().config.getConfigurationSection("menu." + key + ".items").getKeys(false)) {
+        for(String keyItem : this.lobbyManager.getLobby().menuDataConfig.getConfigurationSection("menus." + key + ".items").getKeys(false)) {
             System.out.println("debug-> " + keyItem);
-            System.out.println(this.lobbyManager.getLobby().config.getString("menu."+key+".items."+keyItem+".material") + "1");
+            System.out.println(this.lobbyManager.getLobby().menuDataConfig.getString("menus."+key+".items."+keyItem+".material") + "1");
 
-            inv.setItem(this.lobbyManager.getLobby().config.getInt("menu." + key + ".items." + keyItem + ".slot"),
-                    createGuiItem(Material.getMaterial(this.lobbyManager.getLobby().config.getString("menu." + key + ".items." + keyItem + ".material")),
-                            this.lobbyManager.getLobby().config.getString("menu." + key + ".items." + keyItem + ".title"),
-                            this.lobbyManager.getLobby().config.getString("menu." + key + ".items." + keyItem + ".description")
+            inv.setItem(this.lobbyManager.getLobby().menuDataConfig.getInt("menus." + key + ".items." + keyItem + ".slot"),
+                    createGuiItem(Material.getMaterial(this.lobbyManager.getLobby().menuDataConfig.getString("menus." + key + ".items." + keyItem + ".material")),
+                            this.lobbyManager.getLobby().menuDataConfig.getString("menus." + key + ".items." + keyItem + ".title"),
+                            this.lobbyManager.getLobby().menuDataConfig.getString("menus." + key + ".items." + keyItem + ".description")
                     )
             );
         }
@@ -99,8 +97,8 @@ public class InventoryManager implements Listener {
 
         final Player p = (Player) e.getWhoClicked();
         this.lobbyManager.getCommandInterpreter().execute(p.getPlayer(),
-                this.lobbyManager.getLobby().config.getString("menu." + e.getView().getTitle().toLowerCase()+ ".items."+ clickedItem.getItemMeta().getDisplayName().toLowerCase() + ".action.type"),
-                this.lobbyManager.getLobby().config.getString("menu." + e.getView().getTitle().toLowerCase()+ ".items."+ clickedItem.getItemMeta().getDisplayName().toLowerCase() + ".action.argument"));
+                this.lobbyManager.getLobby().menuDataConfig.getString("menus." + e.getView().getTitle().toLowerCase() + ".items."+ clickedItem.getType() + ".action.type"),
+                this.lobbyManager.getLobby().menuDataConfig.getString("menus." + e.getView().getTitle().toLowerCase() + ".items."+ clickedItem.getType() + ".action.argument"));
         // Using slots click is a best option for your inventory click's
         p.sendMessage("You clicked at slot " + e.getRawSlot());
     }

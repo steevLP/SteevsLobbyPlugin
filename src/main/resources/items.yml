@@ -5,3 +5,9 @@ items:
     slot: 4
     material: "COMPASS"
     permission: "lobby.item.navigator"
+  BOOK:
+    menu: "profile"
+    display: "Profile"
+    slot: 2
+    material: "BOOK"
+    permission: "lobby.item.profil"

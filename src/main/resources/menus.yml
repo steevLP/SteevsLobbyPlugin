@@ -1,15 +1,45 @@
-navigator:
-  title: "Navigator"
-  identifier: "navigator"
-  slots: 54
-  slot: 4
-  permission: slpnet.lobby.navigator
-  items:
-    tridentwar:
-      title: "TridentWar"
-      material: "TRIDENT"
-      description: "test\ntest"
-      slot: 18
-      action:
-        type: "connect"
-        argument: "tw1"
+menus:
+  navigator:
+    title: "Navigator"
+    identifier: "navigator"
+    slots: 54
+    permission: slpnet.lobby.navigator
+    items:
+      TRIDENT:
+        title: "TridentWar"
+        material: "TRIDENT"
+        description: "test\ntest"
+        slot: 18
+        action:
+          type: "connect"
+          argument: "tw1"
+      RED_BED:
+        title: "Bedwars"
+        material: "RED_BED"
+        description: "test\ntest"
+        slot: 20
+        action:
+          type: "connect"
+          argument: "tw1"
+      CRAFTING_TABLE:
+        title: "Master Builder"
+        material: "CRAFTING_TABLE"
+        description: "test\ntest"
+        slot: 22
+        action:
+          type: "connect"
+          argument: "tw1"
+  profile:
+    title: "Profile"
+    identifier: "profile"
+    slots: 54
+    permission: slpnet.lobby.profile
+    items:
+      TRIDENT:
+        title: "TridentWar"
+        material: "TRIDENT"
+        description: "test\ntest"
+        slot: 18
+        action:
+          type: "connect"
+          argument: "tw1"

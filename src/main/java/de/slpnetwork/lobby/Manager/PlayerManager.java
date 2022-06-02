@@ -14,12 +14,6 @@ public class PlayerManager {
         this.lobbyManager = lobbyManager;
     }
 
-    public void giveItems(Player player){
-        player.getInventory().addItem(new ItemStack(Material.BOOK));
-        player.getInventory().addItem(new ItemStack(Material.COMPASS));
-        player.getInventory().addItem(new ItemStack(Material.PLAYER_HEAD));
-    }
-
     /**
      * teleports a player to a location
      * @param player the wanted player

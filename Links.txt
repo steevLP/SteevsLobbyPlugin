@@ -1,0 +1,8 @@
+https://www.google.com/search?client=firefox-b-d&q=hide+players+spigot
+https://www.google.com/search?client=firefox-b-d&q=spigot+toggle+players
+https://www.google.com/search?client=firefox-b-d&q=spigot+get+pressureplate+press
+https://riptutorial.com/bukkit/example/25262/hiding-a-player-from-other-players
+https://www.spigotmc.org/threads/hide-player.66254/
+https://www.spigotmc.org/threads/launch-player-in-specific-direction.408591/
+https://bukkit.org/threads/player-pressure-plate-event.161460/
+https://www.spigotmc.org/threads/playerinteractevent-pressure-plate.403327/

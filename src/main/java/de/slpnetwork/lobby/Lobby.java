@@ -1,8 +1,10 @@
 package de.slpnetwork.lobby;
 
 import de.slpnetwork.lobby.Commands.slpl;
+import de.slpnetwork.lobby.Events.PlayerInteract;
 import de.slpnetwork.lobby.Manager.InventoryManager;
 import de.slpnetwork.lobby.Manager.LobbyManager;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -17,11 +19,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
 import java.io.File;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
-import java.nio.file.Files;
-
+// TODO: Impplement Pluginmetrics
 public class Lobby extends JavaPlugin implements Listener, PluginMessageListener {
     public LobbyManager lobbyManager;
     public FileConfiguration config;
@@ -31,7 +30,8 @@ public class Lobby extends JavaPlugin implements Listener, PluginMessageListener
     public FileConfiguration menuDataConfig;
     public File teleportData;
     public FileConfiguration teleportDataConfig;
-
+    public File jumpData;
+    public FileConfiguration jumpDataConfig;
 
     @Override
     public void onEnable(){
@@ -44,27 +44,32 @@ public class Lobby extends JavaPlugin implements Listener, PluginMessageListener
             itemData = new File(this.getDataFolder(), "items.yml");
             menuData = new File(this.getDataFolder(), "menus.yml");
             teleportData = new File(this.getDataFolder(), "locations.yml");
+            jumpData = new File(this.getDataFolder(), "jumps.yml");
 
             if(!itemData.exists() || !menuData.exists() || !teleportData.exists()) {
                 System.out.println("Loading config files");
                 itemData = new File(this.getDataFolder(), "items.yml");
                 menuData = new File(this.getDataFolder(), "menus.yml");
                 teleportData = new File(this.getDataFolder(), "locations.yml");
+                jumpData = new File(this.getDataFolder(), "jumps.yml");
 
                 itemDataConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(this.getResource("items.yml")));
                 menuDataConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(this.getResource("menus.yml")));
                 teleportDataConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(this.getResource("locations.yml")));
+                jumpDataConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(this.getResource("jumps.yml")));
 
                 itemDataConfig.save(itemData);
                 menuDataConfig.save(menuData);
                 teleportDataConfig.save(teleportData);
+                jumpDataConfig.save(jumpData);
             }
 
             itemDataConfig = YamlConfiguration.loadConfiguration(itemData);
             menuDataConfig = YamlConfiguration.loadConfiguration(menuData);
             teleportDataConfig = YamlConfiguration.loadConfiguration(teleportData);
+            jumpDataConfig = YamlConfiguration.loadConfiguration(jumpData);
         }catch (Exception ex) {
-            this.getServer().getLogger().warning("Could not load or create files due to exceotion: " + ex.getLocalizedMessage());
+            this.getServer().getLogger().warning("Could not load or create files due to exception: " + ex.getLocalizedMessage());
         }
 
         this.lobbyManager = new LobbyManager(this);
@@ -72,6 +77,7 @@ public class Lobby extends JavaPlugin implements Listener, PluginMessageListener
         this.getCommand("slpl").setExecutor(new slpl(this.lobbyManager));
 
         this.getServer().getPluginManager().registerEvents(this, this);
+        this.getServer().getPluginManager().registerEvents(new PlayerInteract(this.lobbyManager), this);
         this.getServer().getPluginManager().registerEvents(new InventoryManager(this.lobbyManager), this);
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);

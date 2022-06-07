@@ -15,6 +15,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 import java.util.HashMap;
 
+//TODO: Implement Permission Handling
+
 public class InventoryManager implements Listener {
     private final LobbyManager lobbyManager;
     private HashMap<String, Inventory> inventories;

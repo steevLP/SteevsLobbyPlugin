@@ -14,13 +14,13 @@ menus:
           type: "connect"
           argument: "tw1"
       RED_BED:
-        title: "Bedwars"
+        title: "Spawn"
         material: "RED_BED"
         description: "test\ntest"
         slot: 20
         action:
-          type: "connect"
-          argument: "tw1"
+          type: "teleport"
+          argument: "spawn"
       CRAFTING_TABLE:
         title: "Master Builder"
         material: "CRAFTING_TABLE"

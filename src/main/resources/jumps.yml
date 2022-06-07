@@ -1,0 +1,10 @@
+plates:
+    example:
+        multiplier:
+            vertical: 4
+            horizontal: 1
+        location:
+            world: world
+            X: 0
+            Y: 0
+            Z: 0

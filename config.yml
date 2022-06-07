@@ -1,63 +1,6 @@
-menu:
-  navigator:
-    title: "Navigator"
-    material: "COMPASS"
-    slots: 54
-    slot: 4
-    permission: slpnet.lobby.navigator
-    items:
-      tridentwar:
-        title: "TridentWar"
-        material: "TRIDENT"
-        description: "test\ntest"
-        slot: 18
-        action:
-          type: "connect"
-          argument: "tw1"
-      bedwars:
-        title: "Bedwars"
-        material: "RED_BED"
-        description: "test\ntest"
-        slot: 20
-        action:
-          type: "connect"
-          argument: "tw1"
-      masterbuilders:
-        title: "Master Builder"
-        material: "CRAFTING_TABLE"
-        description: "test\ntest"
-        slot: 22
-        action:
-          type: "connect"
-          argument: "tw1"
-  profile:
-    title: "Profile"
-    material: "BOOK"
-    slot: 2
-    slots: 54
-    permission: slpnet.lobby.profile
-    items:
-      tridentwar:
-        title: "TridentWar"
-        material: "TRIDENT"
-        description: "test\ntest"
-        slot: 18
-        action:
-          type: "connect"
-          argument: "tw1"
-      bedwars:
-        title: "Bedwars"
-        material: "RED_BED"
-        description: "test\ntest"
-        slot: 20
-        action:
-          type: "connect"
-          argument: "tw1"
-      masterbuilders:
-        title: "Master Builder"
-        material: "CRAFTING_TABLE"
-        description: "test\ntest"
-        slot: 22
-        action:
-          type: "connect"
-          argument: "tw1"
+forceSpawn: true
+defaultSpawn: example
+jumpPlates:
+  ground: EMERALD_BLOCK
+  plate: STONE_PRESSURE_PLATE
+  multiplier: 4

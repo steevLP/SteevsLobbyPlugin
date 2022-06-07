@@ -10,4 +10,4 @@ items:
     display: "Profile"
     slot: 2
     material: "BOOK"
-    permission: "lobby.item.profil"
+    permission: "lobby.item.profile"

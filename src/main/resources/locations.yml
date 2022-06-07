@@ -1,1 +1,7 @@
 locations:
+  example:
+    name: example
+    world: world
+    X: 0
+    y: 0
+    Z: 0
